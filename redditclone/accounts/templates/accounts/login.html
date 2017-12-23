@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block body_block %}
+  <div class="jumbotron">
+
+    <h1>Please Login</h1>
+    <form action="" method="POST">
+      {% csrf_token %}
+
+      {% if request.GET.next %}
+        <input type="hidden" name="next" value="{{ request.GET.next }}">
+      {% endif %}
+
+      <label for="uname">User Name:</label>
+      <input type="text" id="uname" name="username" placeholder="Enter User Name"><br/><br/>
+
+      <label for="pass">Password:</label>
+      <input type="password" id="pass" name="pwd1" placeholder="Enter Password"><br/><br/>
+      <span class='help-block'>
+        {% if error_key %}
+          <h2>{{error_key}}</h2>
+        {% endif %}
+      </span>
+
+      <button type="submit" class="btn btn-primary" value="Signup">Login</button>
+
+    </form>
+
+  </div>
+
+{% endblock %}
